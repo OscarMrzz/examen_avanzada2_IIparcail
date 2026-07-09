@@ -14,7 +14,7 @@ services:
       - "1433:1433"
     volumes:
       - ./schema.sql:/usr/src/app/schema.sql
-      - ./import-data.sh:/usr/src/app/import-data.sh
+      - ./create-db.sh:/usr/src/app/create-db.sh
     command: >
       bash -c "chmod +x /usr/src/app/import-data.sh && /usr/src/app/import-data.sh & /opt/mssql/bin/sqlservr"
 
