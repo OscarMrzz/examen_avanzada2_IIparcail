@@ -1,0 +1,32 @@
+
+version: '3.8'
+
+services:
+  # --- Servicio 1: El Servidor de Base de Datos ---
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server_dentasmart
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password12345678#
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./schema.sql:/usr/src/app/schema.sql
+      - ./import-data.sh:/usr/src/app/import-data.sh
+    command: >
+      bash -c "chmod +x /usr/src/app/import-data.sh && /usr/src/app/import-data.sh & /opt/mssql/bin/sqlservr"
+
+  # --- Servicio 2: Java NetBeans / Maven ---
+  java-app:
+    build: .
+    container_name: app_dentasmart
+    depends_on:
+      sqlserver:
+        condition: service_healthy 
+    environment:
+      - DISPLAY=${DISPLAY:-host.docker.internal:0.0} 
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+    network_mode: "host" 
