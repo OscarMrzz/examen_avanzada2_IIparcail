@@ -21,7 +21,7 @@ BEGIN
 -- Datos de ejemplo
     INSERT INTO dentistas (nombre, apellido, especialidad, salario_base) 
     VALUES ('Oscar', 'Hernandez', 'Ortodoncia', 25000.00),
-           ('Genesis', 'Rodriguezjj', 'Endodoncia', 30000.00);
+           ('Genesis', 'Rodriguez', 'Endodoncia', 30000.00);
 END
 GO
 
