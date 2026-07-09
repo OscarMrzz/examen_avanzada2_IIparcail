@@ -1,0 +1,21 @@
+# === Compilación y Construcción (Maven) ===
+target/
+*.jar
+*.war
+*.ear
+*.nar
+*.class
+
+# === Configuraciones específicas de NetBeans ===
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# === Configuraciones del Entorno Local / Sistema Operativo ===
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
