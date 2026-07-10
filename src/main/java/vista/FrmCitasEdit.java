@@ -1,8 +1,8 @@
 package vista;
 
-public class FrmCitas extends javax.swing.JFrame {
+public class FrmCitasEdit extends javax.swing.JFrame {
 
-    public FrmCitas() {
+    public FrmCitasEdit() {
         initComponents();
     }
 
@@ -21,22 +21,15 @@ public class FrmCitas extends javax.swing.JFrame {
         inputMontoMateriales = new javax.swing.JTextField();
         lblTotalNeto = new javax.swing.JLabel();
         inputTotalNeto = new javax.swing.JTextField();
-        botonProcesarCita = new javax.swing.JButton();
-        botonLimpiar = new javax.swing.JButton();
-        lblHistorial = new javax.swing.JLabel();
-        scrollHistorial = new javax.swing.JScrollPane();
-        tablaHistorial = new javax.swing.JTable();
-        botonImprimirComprobante = new javax.swing.JButton();
-        botonRefrescar = new javax.swing.JButton();
-        botonAbrirActualizar = new javax.swing.JButton();
-        botonElimininar = new javax.swing.JButton();
+        botonActualizar = new javax.swing.JButton();
+        botonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("DentaSmart - Registro de Citas Medicas");
 
         lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(0, 150, 136));
-        lblTitulo.setText("Registro de Citas Medicas");
+        lblTitulo.setText("Actualizar Cita Medica");
 
         lblDentista.setText("Dentista:");
 
@@ -51,54 +44,17 @@ public class FrmCitas extends javax.swing.JFrame {
 
         inputTotalNeto.setEditable(false);
 
-        botonProcesarCita.setBackground(new java.awt.Color(38, 166, 154));
-        botonProcesarCita.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        botonProcesarCita.setForeground(new java.awt.Color(255, 255, 255));
-        botonProcesarCita.setText("Procesar Cita");
-        botonProcesarCita.addActionListener(new java.awt.event.ActionListener() {
+        botonActualizar.setBackground(new java.awt.Color(38, 166, 154));
+        botonActualizar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        botonActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        botonActualizar.setText("Actualizar");
+        botonActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonProcesarCitaActionPerformed(evt);
+                botonActualizarActionPerformed(evt);
             }
         });
 
-        botonLimpiar.setBackground(new java.awt.Color(120, 144, 156));
-        botonLimpiar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        botonLimpiar.setForeground(new java.awt.Color(255, 255, 255));
-        botonLimpiar.setText("Limpiar");
-        botonLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonLimpiarActionPerformed(evt);
-            }
-        });
-
-        lblHistorial.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        lblHistorial.setText("Historial de Citas");
-
-        tablaHistorial.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Dentista", "Especialidad", "Paciente", "Fecha", "Procedimiento", "Materiales", "Total Neto"
-            }
-        ));
-        scrollHistorial.setViewportView(tablaHistorial);
-
-        botonImprimirComprobante.setBackground(new java.awt.Color(38, 166, 154));
-        botonImprimirComprobante.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        botonImprimirComprobante.setForeground(new java.awt.Color(255, 255, 255));
-        botonImprimirComprobante.setText("Imprimir Comprobante");
-        botonImprimirComprobante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonImprimirComprobanteActionPerformed(evt);
-            }
-        });
-
-        botonRefrescar.setText("Refrescar");
-
-        botonAbrirActualizar.setText("Actualizar");
-
-        botonElimininar.setText("Eliminar");
+        botonCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,9 +64,6 @@ public class FrmCitas extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTitulo)
-                    .addComponent(scrollHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHistorial)
-                    .addComponent(botonImprimirComprobante)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,16 +79,10 @@ public class FrmCitas extends javax.swing.JFrame {
                             .addComponent(inputMontoMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inputTotalNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonProcesarCita)
-                        .addGap(41, 41, 41)
-                        .addComponent(botonLimpiar)
+                        .addComponent(botonActualizar)
                         .addGap(27, 27, 27)
-                        .addComponent(botonRefrescar)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonAbrirActualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonElimininar)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addComponent(botonCancelar)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,31 +111,16 @@ public class FrmCitas extends javax.swing.JFrame {
                     .addComponent(inputTotalNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonProcesarCita)
-                    .addComponent(botonLimpiar)
-                    .addComponent(botonRefrescar)
-                    .addComponent(botonAbrirActualizar)
-                    .addComponent(botonElimininar))
-                .addGap(30, 30, 30)
-                .addComponent(lblHistorial)
-                .addGap(10, 10, 10)
-                .addComponent(scrollHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonImprimirComprobante)
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(botonActualizar)
+                    .addComponent(botonCancelar))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonProcesarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProcesarCitaActionPerformed
-    }//GEN-LAST:event_botonProcesarCitaActionPerformed
-
-    private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
-    }//GEN-LAST:event_botonLimpiarActionPerformed
-
-    private void botonImprimirComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirComprobanteActionPerformed
-    }//GEN-LAST:event_botonImprimirComprobanteActionPerformed
+    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
+    }//GEN-LAST:event_botonActualizarActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -197,31 +129,24 @@ public class FrmCitas extends javax.swing.JFrame {
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmCitas().setVisible(true);
+                new FrmCitasEdit().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton botonAbrirActualizar;
-    public javax.swing.JButton botonElimininar;
-    public javax.swing.JButton botonImprimirComprobante;
-    public javax.swing.JButton botonLimpiar;
-    public javax.swing.JButton botonProcesarCita;
-    public javax.swing.JButton botonRefrescar;
+    public javax.swing.JButton botonActualizar;
+    public javax.swing.JButton botonCancelar;
     public javax.swing.JComboBox<modelo.Dentista> comboDentistas;
     public javax.swing.JTextField inputMontoMateriales;
     public javax.swing.JTextField inputMontoProcedimiento;
     public javax.swing.JTextField inputPaciente;
     public javax.swing.JTextField inputTotalNeto;
     public javax.swing.JLabel lblDentista;
-    public javax.swing.JLabel lblHistorial;
     public javax.swing.JLabel lblMontoMateriales;
     public javax.swing.JLabel lblMontoProcedimiento;
     public javax.swing.JLabel lblPaciente;
     public javax.swing.JLabel lblTitulo;
     public javax.swing.JLabel lblTotalNeto;
-    public javax.swing.JScrollPane scrollHistorial;
-    public javax.swing.JTable tablaHistorial;
     // End of variables declaration//GEN-END:variables
 }

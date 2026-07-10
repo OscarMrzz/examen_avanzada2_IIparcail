@@ -35,12 +35,12 @@ public class DentistasDAOImp implements DentistasDAO {
                  */
                 Dentista dentista = new Dentista();
 
-                dentista.setIdDentista(rs.getInt(0));
-                dentista.setNombre(rs.getString(1));
-                dentista.setApellido(rs.getString(2));
-                dentista.setEspecialidad(rs.getString(3));
-                dentista.setSalarioBase(rs.getDouble(4));
-                dentista.setEstado(rs.getString(5));
+                dentista.setIdDentista(rs.getInt(1));
+                dentista.setNombre(rs.getString(2));
+                dentista.setApellido(rs.getString(3));
+                dentista.setEspecialidad(rs.getString(4));
+                dentista.setSalarioBase(rs.getDouble(5));
+                dentista.setEstado(rs.getString(6));
 
                 dentistas.add(dentista);
 
@@ -57,7 +57,7 @@ public class DentistasDAOImp implements DentistasDAO {
 
     public Dentista getById(int id) {
         Dentista dentista = new Dentista();
-        String query = "SELECT * from dentista WHERE id_dentist =?";
+        String query = "SELECT * FROM dentistas WHERE id_dentista = ?";
         try{
             Connection conn = ConexionDB.getConexion();
             PreparedStatement ps = conn.prepareStatement(query);
@@ -67,12 +67,12 @@ public class DentistasDAOImp implements DentistasDAO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
 
-                 dentista.setIdDentista(rs.getInt(0));
-                dentista.setNombre(rs.getString(1));
-                dentista.setApellido(rs.getString(2));
-                dentista.setEspecialidad(rs.getString(3));
-                dentista.setSalarioBase(rs.getDouble(4));
-                dentista.setEstado(rs.getString(5));
+                 dentista.setIdDentista(rs.getInt(1));
+                dentista.setNombre(rs.getString(2));
+                dentista.setApellido(rs.getString(3));
+                dentista.setEspecialidad(rs.getString(4));
+                dentista.setSalarioBase(rs.getDouble(5));
+                dentista.setEstado(rs.getString(6));
 
             
             }

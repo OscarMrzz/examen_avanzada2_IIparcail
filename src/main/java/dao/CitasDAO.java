@@ -10,7 +10,7 @@ public interface CitasDAO {
     List<CitaMedica> getAll() throws SQLException;
     CitaMedica getById(int id);
     boolean create(CitaMedica cita);
-    boolean update(int id);
+    boolean update(CitaMedica cita);
     boolean delete(int id);
     
 

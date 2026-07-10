@@ -8,27 +8,27 @@ import java.sql.SQLException;
 public class ConexionDB {
 
     private static final String DB_HOST = System.getenv("DB_HOST") != null ? System.getenv("DB_HOST") : "localhost";
-    
+    private static final String DB_NAME = System.getenv("DB_NAME") != null ? System.getenv("DB_NAME") : "db_dentasmart_control";
+    private static final String DB_PASSWORD = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "Password12345678";
 
     private static final String URL = "jdbc:sqlserver://" + DB_HOST + ":1435;"
-            + "databaseName=db_dentasmart;"
+            + "databaseName=" + DB_NAME + ";"
             + "encrypt=true;"
             + "trustServerCertificate=true;";
 
 
-    private  static  final  String USER ="sa";
-    private  static  final  String PASWORD ="Password";
-    private  static Connection conexion =null;
+    private static final String USER = "sa";
+    private static Connection conexion = null;
 
-    private ConexionDB(){
+    private ConexionDB() {
 
     }
 
-    public static Connection getConexion(){
+    public static Connection getConexion() {
         try {
-            if (conexion==null || conexion.isClosed()){
+            if (conexion == null || conexion.isClosed()) {
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                conexion= DriverManager.getConnection(URL,USER,PASWORD);
+                conexion = DriverManager.getConnection(URL, USER, DB_PASSWORD);
                 System.out.println("Conexion exitos");
             }
         } catch (SQLException e) {
@@ -40,14 +40,14 @@ public class ConexionDB {
         return conexion;
     }
 
-    public  static  void  cerrarConexion(){
-        try{
+    public static void cerrarConexion() {
+        try {
 
 
-        if(conexion!=null  &&  !conexion.isClosed()){
-            conexion.close();
-            System.out.println("Conexion cerrada exitosamente");
-        }
+            if (conexion != null && !conexion.isClosed()) {
+                conexion.close();
+                System.out.println("Conexion cerrada exitosamente");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

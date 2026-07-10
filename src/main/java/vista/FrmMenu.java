@@ -83,12 +83,9 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonGestionCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestionCitasActionPerformed
-        FrmCitas frmCitas = new FrmCitas();
-        frmCitas.setVisible(true);
     }//GEN-LAST:event_botonGestionCitasActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        System.exit(0);
     }//GEN-LAST:event_botonSalirActionPerformed
 
     public static void main(String args[]) {

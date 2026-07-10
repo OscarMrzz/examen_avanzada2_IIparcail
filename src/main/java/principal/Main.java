@@ -1,7 +1,6 @@
 package principal;
 
-import javax.swing.UIManager;
-
+import controladores.CitasController;
 import controladores.MenuController;
 import vista.FrmCitas;
 import vista.FrmMenu;
@@ -12,7 +11,8 @@ public class Main {
    try {
     FrmMenu vistaHome = new FrmMenu();
     FrmCitas vistaCitas = new FrmCitas();
-    MenuController controller = new MenuController(vistaHome, vistaCitas);
+    MenuController menuController = new MenuController(vistaHome, vistaCitas);
+    CitasController citasController = new CitasController(vistaCitas, vistaHome);
    } catch (Exception e) {
     e.printStackTrace();
    }
