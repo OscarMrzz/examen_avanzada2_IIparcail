@@ -11,7 +11,7 @@ services:
       - MSSQL_SA_PASSWORD=Password12345678#
       - MSSQL_PID=Developer
     ports:
-      - "1433:1433"
+      - "1435:1433"
     volumes:
       - ./schema.sql:/usr/src/app/schema.sql
       - ./create-db.sh:/usr/src/app/create-db.sh

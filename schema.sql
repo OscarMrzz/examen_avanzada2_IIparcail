@@ -1,4 +1,4 @@
-IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'db_dentasmart_control')
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'db_dentasmart')
 BEGIN
     CREATE DATABASE db_dentasmart_control;
 END
