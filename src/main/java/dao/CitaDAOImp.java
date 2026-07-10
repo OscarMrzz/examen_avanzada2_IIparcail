@@ -74,8 +74,8 @@ public class CitaDAOImp implements CitasDAO {
     }
 
     public boolean create(CitaMedica cita) {
-        String query = "INSERT INTO citas_medicas (id_dentista, paciente, monto_procedimiento, monto_materiales, total_neto) "
-                + "VALUES (?, ?, ?, ?, ?);";
+        String query = "INSERT INTO citas_medicas (id_dentista, paciente, fecha_cita, monto_procedimiento, monto_materiales, total_neto) "
+                + "VALUES (?, ?, ?, ?, ?, ?);";
         try {
 
             Connection conn = ConexionDB.getConexion();
@@ -83,9 +83,10 @@ public class CitaDAOImp implements CitasDAO {
 
             ps.setInt(1, cita.getIdDentista());
             ps.setString(2, cita.getPaciente());
-            ps.setDouble(3, cita.getMontoProcedimiento());
-            ps.setDouble(4, cita.getMontoMateriales());
-            ps.setDouble(5, cita.getTotalNeto());
+            ps.setString(3, cita.getFechaCita());
+            ps.setDouble(4, cita.getMontoProcedimiento());
+            ps.setDouble(5, cita.getMontoMateriales());
+            ps.setDouble(6, cita.getTotalNeto());
 
             int filasAfectadas = ps.executeUpdate();
 
@@ -98,7 +99,7 @@ public class CitaDAOImp implements CitasDAO {
     }
 
     public boolean update(CitaMedica cita) {
-        String query = "UPDATE citas_medicas SET id_dentista=?, paciente=?, monto_procedimiento=?, monto_materiales=?, total_neto=? WHERE id_cita=?;";
+        String query = "UPDATE citas_medicas SET id_dentista=?, paciente=?, fecha_cita=?, monto_procedimiento=?, monto_materiales=?, total_neto=? WHERE id_cita=?;";
         try {
 
             Connection conn = ConexionDB.getConexion();
@@ -106,10 +107,11 @@ public class CitaDAOImp implements CitasDAO {
 
             ps.setInt(1, cita.getIdDentista());
             ps.setString(2, cita.getPaciente());
-            ps.setDouble(3, cita.getMontoProcedimiento());
-            ps.setDouble(4, cita.getMontoMateriales());
-            ps.setDouble(5, cita.getTotalNeto());
-            ps.setInt(6, cita.getIdCita());
+            ps.setString(3, cita.getFechaCita());
+            ps.setDouble(4, cita.getMontoProcedimiento());
+            ps.setDouble(5, cita.getMontoMateriales());
+            ps.setDouble(6, cita.getTotalNeto());
+            ps.setInt(7, cita.getIdCita());
 
             int filasAfectadas = ps.executeUpdate();
 

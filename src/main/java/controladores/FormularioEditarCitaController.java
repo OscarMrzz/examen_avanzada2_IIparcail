@@ -4,11 +4,16 @@ import dao.CitaDAOImp;
 import dao.CitasDAO;
 import dao.DentistasDAO;
 import dao.DentistasDAOImp;
+import java.awt.Component;
+import java.util.Date;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import modelo.CitaMedica;
 import modelo.Dentista;
+import utils.Utils;
 import vista.FrmCitasEdit;
 
 public class FormularioEditarCitaController {
@@ -23,6 +28,7 @@ public class FormularioEditarCitaController {
         this.vista = vista;
         this.idCita = idCita;
         this.padre = padre;
+        this.configurarComboDentistas();
         this.cargarDentistasEnCombo();
         this.cargarCitaEnFormulario();
         this.cargarFuncionalidades();
@@ -37,6 +43,7 @@ public class FormularioEditarCitaController {
 
     public void cargarDentistasEnCombo() {
         vista.comboDentistas.removeAllItems();
+        vista.comboDentistas.addItem(null);
         try {
             for (Dentista dentista : dentistasDAO.getAll()) {
                 if ("ACTIVO".equalsIgnoreCase(dentista.getEstado())) {
@@ -47,6 +54,20 @@ public class FormularioEditarCitaController {
             e.printStackTrace();
             JOptionPane.showMessageDialog(vista, "Error al cargar dentistas.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void configurarComboDentistas() {
+        vista.comboDentistas.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value,
+                    int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value == null) {
+                    setText("");
+                }
+                return this;
+            }
+        });
     }
 
     public void cargarCitaEnFormulario() {
@@ -62,10 +83,12 @@ public class FormularioEditarCitaController {
         vista.inputMontoProcedimiento.setText(String.valueOf(cita.getMontoProcedimiento()));
         vista.inputMontoMateriales.setText(String.valueOf(cita.getMontoMateriales()));
         vista.inputTotalNeto.setText(String.valueOf(cita.getTotalNeto()));
+        vista.inputFecha.setText(Utils.formatearFechaTexto(cita.getFechaCita()));
+        vista.inputHora.setText(Utils.formatearHoraTexto(cita.getFechaCita()));
 
         for (int i = 0; i < vista.comboDentistas.getItemCount(); i++) {
             Dentista dentista = vista.comboDentistas.getItemAt(i);
-            if (dentista.getIdDentista() == cita.getIdDentista()) {
+            if (dentista != null && dentista.getIdDentista() == cita.getIdDentista()) {
                 vista.comboDentistas.setSelectedIndex(i);
                 break;
             }
@@ -101,11 +124,29 @@ public class FormularioEditarCitaController {
         }
 
         double totalNeto = montoProcedimiento + montoMateriales;
+        Date fecha;
+        try {
+            fecha = Utils.parsearFechaTexto(vista.inputFecha.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(vista, "Ingrese una fecha valida en formato dd/MM/yyyy.", "Validacion", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Date hora;
+        try {
+            hora = Utils.parsearHoraTexto(vista.inputHora.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(vista, "Ingrese una hora valida en formato HH:mm.", "Validacion", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String fechaCita = Utils.unirFechaYHora(fecha, hora);
+
         CitaMedica cita = new CitaMedica(
                 idCita,
                 dentista.getIdDentista(),
                 paciente,
-                null,
+                fechaCita,
                 montoProcedimiento,
                 montoMateriales,
                 totalNeto

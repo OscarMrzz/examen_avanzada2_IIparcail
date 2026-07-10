@@ -35,6 +35,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblDentista" min="-2" pref="190" max="-2" attributes="0"/>
                           <Component id="lblPaciente" min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="lblFecha" min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="lblHora" min="-2" pref="190" max="-2" attributes="0"/>
                           <Component id="lblMontoProcedimiento" min="-2" pref="190" max="-2" attributes="0"/>
                           <Component id="lblMontoMateriales" min="-2" pref="190" max="-2" attributes="0"/>
                           <Component id="lblTotalNeto" min="-2" pref="190" max="-2" attributes="0"/>
@@ -43,6 +45,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="comboDentistas" min="-2" pref="380" max="-2" attributes="0"/>
                           <Component id="inputPaciente" min="-2" pref="380" max="-2" attributes="0"/>
+                          <Component id="inputFecha" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="inputHora" min="-2" pref="200" max="-2" attributes="0"/>
                           <Component id="inputMontoProcedimiento" min="-2" pref="200" max="-2" attributes="0"/>
                           <Component id="inputMontoMateriales" min="-2" pref="200" max="-2" attributes="0"/>
                           <Component id="inputTotalNeto" min="-2" pref="200" max="-2" attributes="0"/>
@@ -78,6 +82,16 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPaciente" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="inputPaciente" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblHora" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputHora" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -142,6 +156,20 @@
     </Component>
     <Component class="javax.swing.JTextField" name="inputPaciente">
     </Component>
+    <Component class="javax.swing.JLabel" name="lblFecha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="inputFecha">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblHora">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hora:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="inputHora">
+    </Component>
     <Component class="javax.swing.JLabel" name="lblMontoProcedimiento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Monto Procedimiento (L):"/>
@@ -182,9 +210,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Procesar Cita"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonProcesarCitaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonLimpiar">
       <Properties>
@@ -199,9 +224,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonLimpiarActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHistorial">
       <Properties>
@@ -249,9 +271,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Imprimir Comprobante"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonImprimirComprobanteActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonRefrescar">
       <Properties>

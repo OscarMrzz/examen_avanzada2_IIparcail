@@ -15,6 +15,22 @@ public class FrmCitasEdit extends javax.swing.JFrame {
         comboDentistas = new javax.swing.JComboBox<>();
         lblPaciente = new javax.swing.JLabel();
         inputPaciente = new javax.swing.JTextField();
+        lblFecha = new javax.swing.JLabel();
+        try {
+            javax.swing.text.MaskFormatter mascaraFecha = new javax.swing.text.MaskFormatter("##/##/####");
+            mascaraFecha.setPlaceholderCharacter('_');
+            inputFecha = new javax.swing.JFormattedTextField(mascaraFecha);
+        } catch (java.text.ParseException ex) {
+            inputFecha = new javax.swing.JFormattedTextField();
+        }
+        lblHora = new javax.swing.JLabel();
+        try {
+            javax.swing.text.MaskFormatter mascaraHora = new javax.swing.text.MaskFormatter("##:##");
+            mascaraHora.setPlaceholderCharacter('_');
+            inputHora = new javax.swing.JFormattedTextField(mascaraHora);
+        } catch (java.text.ParseException ex) {
+            inputHora = new javax.swing.JFormattedTextField();
+        }
         lblMontoProcedimiento = new javax.swing.JLabel();
         inputMontoProcedimiento = new javax.swing.JTextField();
         lblMontoMateriales = new javax.swing.JLabel();
@@ -34,6 +50,14 @@ public class FrmCitasEdit extends javax.swing.JFrame {
         lblDentista.setText("Dentista:");
 
         lblPaciente.setText("Paciente:");
+
+        lblFecha.setText("Fecha:");
+
+        inputFecha.setToolTipText("Formato dd/MM/yyyy (ejemplo 09/07/2026)");
+
+        lblHora.setText("Hora:");
+
+        inputHora.setToolTipText("Formato HH:mm (ejemplo 14:30)");
 
         lblMontoProcedimiento.setText("Monto Procedimiento (L):");
 
@@ -68,6 +92,8 @@ public class FrmCitasEdit extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblMontoProcedimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblMontoMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTotalNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -75,6 +101,8 @@ public class FrmCitasEdit extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(comboDentistas, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inputPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputHora, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inputMontoProcedimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inputMontoMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inputTotalNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -97,6 +125,14 @@ public class FrmCitasEdit extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPaciente)
                     .addComponent(inputPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFecha)
+                    .addComponent(inputFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHora)
+                    .addComponent(inputHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMontoProcedimiento)
@@ -138,11 +174,15 @@ public class FrmCitasEdit extends javax.swing.JFrame {
     public javax.swing.JButton botonActualizar;
     public javax.swing.JButton botonCancelar;
     public javax.swing.JComboBox<modelo.Dentista> comboDentistas;
+    public javax.swing.JFormattedTextField inputFecha;
+    public javax.swing.JFormattedTextField inputHora;
     public javax.swing.JTextField inputMontoMateriales;
     public javax.swing.JTextField inputMontoProcedimiento;
     public javax.swing.JTextField inputPaciente;
     public javax.swing.JTextField inputTotalNeto;
     public javax.swing.JLabel lblDentista;
+    public javax.swing.JLabel lblFecha;
+    public javax.swing.JLabel lblHora;
     public javax.swing.JLabel lblMontoMateriales;
     public javax.swing.JLabel lblMontoProcedimiento;
     public javax.swing.JLabel lblPaciente;
